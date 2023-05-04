@@ -33,7 +33,7 @@ namespace BusinessLayer.Concrete
 
         public void Insert(Service t)
         {
-            throw new NotImplementedException();
+            _serviceDal.Insert(t);
         }
 
         public void Update(Service t)
