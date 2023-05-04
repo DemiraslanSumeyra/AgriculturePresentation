@@ -1,5 +1,13 @@
-var builder = WebApplication.CreateBuilder(args);
+using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete.EntityFramework;
+using DataAccessLayer.Contexts;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IServiceService, ServiceManager>();
+builder.Services.AddScoped<IServiceDal,EFServiceDal>();
+builder.Services.AddDbContext<AgricultureContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
