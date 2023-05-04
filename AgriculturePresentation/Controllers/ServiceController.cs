@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AgriculturePresentation.Controllers
 {
-    public class TestController : Controller
+    public class ServiceController : Controller
     {
         private readonly IServiceService _serviceService;
 
-        public TestController(IServiceService serviceService)
+        public ServiceController(IServiceService serviceService)
         {
             _serviceService = serviceService;
         }
@@ -38,6 +38,24 @@ namespace AgriculturePresentation.Controllers
                 return RedirectToAction("Index");
             }
             return View(model);
+        }
+        public IActionResult DeleteService(int id)
+        {
+            var values=_serviceService.GetById(id);
+            _serviceService.Delete(values);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult EditService(int id)
+        {
+            var values=_serviceService.GetById(id);
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult EditService(Service service)
+        {
+            _serviceService.Update(service);
+            return RedirectToAction("Index");
         }
     }
 }
