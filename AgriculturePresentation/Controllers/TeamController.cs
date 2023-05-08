@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 
 namespace AgriculturePresentation.Controllers
 {
@@ -16,7 +19,7 @@ namespace AgriculturePresentation.Controllers
 
         public IActionResult Index()
         {
-           var values= _teamService.GetListAll();
+            var values = _teamService.GetListAll();
             return View(values);
         }
         [HttpGet]
@@ -27,8 +30,52 @@ namespace AgriculturePresentation.Controllers
         [HttpPost]
         public IActionResult AddTeam(Team team)
         {
-            _teamService.Insert(team);
+            TeamValidator validationRules = new TeamValidator();
+            ValidationResult result = validationRules.Validate(team);
+            if (result.IsValid)
+            {
+                _teamService.Insert(team);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+        }
+        public IActionResult DeleteTeam(int id)
+        {
+            var values = _teamService.GetById(id);
+            _teamService.Delete(values);
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult EditTeam(int id)
+        {
+            var values = _teamService.GetById(id);
+            return View(values);
+        }
+        [HttpPost]
+        public IActionResult EditTeam(Team team)
+        {
+            TeamValidator validationRules = new TeamValidator();
+            ValidationResult result = validationRules.Validate(team);
+            if (result.IsValid)
+            {
+                _teamService.Update(team);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
     }
 }
