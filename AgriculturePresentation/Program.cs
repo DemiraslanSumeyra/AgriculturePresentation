@@ -10,6 +10,10 @@ builder.Services.AddScoped<IServiceService, ServiceManager>();
 builder.Services.AddScoped<IServiceDal,EFServiceDal>();
 builder.Services.AddScoped<ITeamService, TeamManager>();
 builder.Services.AddScoped<ITeamDal, EFTeamDal>();
+builder.Services.AddScoped<IAnnouncementService,AnnouncementManager>();
+builder.Services.AddScoped<IAnnouncementDal,EFAnnouncementDal>();
+builder.Services.AddScoped<IImageService, ImageManager>();
+builder.Services.AddScoped<IImageDal, EFImageDal>();
 builder.Services.AddDbContext<AgricultureContext>();
 
 // Add services to the container.
