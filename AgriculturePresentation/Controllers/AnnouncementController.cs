@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualBasic;
 
 namespace AgriculturePresentation.Controllers
 {
@@ -26,6 +27,8 @@ namespace AgriculturePresentation.Controllers
         [HttpPost]
         public IActionResult AddAnnouncement(Announcement announcement)
         {
+            announcement.Date=DateTime.Parse(DateTime.Now.ToString());
+            announcement.Status = false;
             _announcementService.Insert(announcement);
             return RedirectToAction("Index");
         }
