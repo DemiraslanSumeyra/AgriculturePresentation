@@ -15,9 +15,9 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.PersonName).NotEmpty().WithMessage("Takım arkadaşı alanı boş geçilemez.");
             RuleFor(x => x.Title).NotEmpty().WithMessage("Görev kısmı boş geçilemez.");
             RuleFor(x => x.ImageURL).NotEmpty().WithMessage("Resim yolu boş geçilemez.");
-            RuleFor(x => x.PersonName).MaximumLength(50).WithMessage("Lütfen 50 karakterden daha az veri girişi yapın");
+            RuleFor(x => x.PersonName).MaximumLength(50).WithMessage("Lütfen 50 karakterden daha az veri girişi yapın.");
             RuleFor(x => x.PersonName).MinimumLength(5).WithMessage("Lütfen en az 5 karakter veri girişi yapın.");
-            RuleFor(x => x.Title).MaximumLength(50).WithMessage("Lütfen 50 karakterden daha az veri girişi yapın");
+            RuleFor(x => x.Title).MaximumLength(50).WithMessage("Lütfen 50 karakterden daha az veri girişi yapın.");
             RuleFor(x => x.Title).MinimumLength(3).WithMessage("Lütfen en az 5 karakter veri girişi yapın.");
 
         }
