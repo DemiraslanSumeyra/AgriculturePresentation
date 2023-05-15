@@ -14,6 +14,8 @@ builder.Services.AddScoped<IAnnouncementService,AnnouncementManager>();
 builder.Services.AddScoped<IAnnouncementDal,EFAnnouncementDal>();
 builder.Services.AddScoped<IImageService, ImageManager>();
 builder.Services.AddScoped<IImageDal, EFImageDal>();
+builder.Services.AddScoped<IAddressService, AddressManager>();
+builder.Services.AddScoped<IAddressDal, EFAddressDal>();
 builder.Services.AddDbContext<AgricultureContext>();
 
 // Add services to the container.
