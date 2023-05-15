@@ -18,6 +18,8 @@ builder.Services.AddScoped<IAddressService, AddressManager>();
 builder.Services.AddScoped<IAddressDal, EFAddressDal>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IContactDal, EFContactDal>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
+builder.Services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
 builder.Services.AddDbContext<AgricultureContext>();
 
 // Add services to the container.
