@@ -41,88 +41,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
         </div>
-    </div>
-    <!-- //Modal1 -->
-    <!--//Slider-->
-    <!--//Header-->
-    <!-- about -->
-    <div class="about" id="about">
-        <div class="container">
-            <h3 class="tittle">About Us</h3>
-            <p class="heading-btm-w3ls">We are a world-leading provider of agricultural products.</p>
-            <div id="horizontalTab">
-                <ul class="resp-tabs-list">
-                    <li>History</li>
-                    <li>About us</li>
-                    <li>Our clients </li>
-                </ul>
-                <div class="resp-tabs-container">
-                    <div class="tab1">
-                        <p class="para-w3-agileits">Duis hendrerit lacus vel eros gravida, ac bibendum urna sollicitudin. Ut tempus leo quis diam auctor, et malesuada risus eleifend. Vivamus quis facilisis arcu. Vestibulum quis velit sit amet odio ullamcorper congue id a est.Suspendisse fringilla pellentesque risus sit amet bibendum. id consequat turpis auctor venenatis.</p>
-                    </div>
-                    <div class="tab2">
-                        <p class="para-w3-agileits">Proin congue, est dapibus efficitur egestas, turpis ligula finibus sem, sed lacinia dui risus nec enim. Morbi condimentum, turpis at fringilla condimentum, leo arcu malesuada urna, ut vulputate lectus enim in odio.Donec fringilla hendrerit laoreet. Cras augue urna, convallis mollis dictum at. Phasellus sit amet massa lectus.  </p>
-                    </div>
-                    <div class="tab3">
-                        <div class="clients">
-                            <ul>
-                                <li><img src="~/web/images/c1.png" alt="clients" class="img-responsive" /><span>Sean Damon</span></li>
-                                <li><img src="~/web/images/c2.png" alt="clients" class="img-responsive" /><span>Natalie Barnes</span></li>
-                                <li><img src="~/web/images/c3.png" alt="clients" class="img-responsive" /><span>John Mccoist</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //about-bottom -->
-    <!--sevices-->
-    <div class="sevices-w3layouts" id="services">
-        <div class="container">
-            <h3 class="tittle">Our Services</h3>
-            <p class="heading-btm-w3ls">Suspendisse fringilla pellentesque risus sit amet bibendum.</p>
-            <div class="services-main">
-                <div class="col-md-3 sevices-w3layouts-grids wow fadeInUp animated" data-wow-delay=".5s">
-                    <h5>Cropping</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipi est eligendi scing elit consectetur</p>
-
-                    <div class="sevices-w3layouts-img c1">
-                        <i class="fa fa-pagelines" aria-hidden="true"></i>
-                        <p>Lorem ipsum</p>
-                    </div>
-                </div>
-                <div class="col-md-3 sevices-w3layouts-grids sevices-w3layouts-mdl wow fadeInUp animated" data-wow-delay=".5s">
-                    <h5>Safety</h5>
-                    <p>Consectetur adipi lorem ipsum dolor sit amet, est eligendi scing elit consectetur.</p>
-
-                    <div class="sevices-w3layouts-img c2">
-                        <i class="fa fa-globe" aria-hidden="true"></i>
-                        <p>Lorem ipsum</p>
-                    </div>
-                </div>
-                <div class="col-md-3 sevices-w3layouts-grids sevices-w3layouts-mdl1 wow fadeInUp animated" data-wow-delay=".5s">
-                    <h5>Environment</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipi est eligendi scing elit consectetur.</p>
-
-                    <div class="sevices-w3layouts-img c3">
-                        <i class="fa fa-tree" aria-hidden="true"></i>
-                        <p>Lorem ipsum</p>
-                    </div>
-                </div>
-                <div class="col-md-3 sevices-w3layouts-grids wow fadeInUp animated" data-wow-delay=".5s">
-                    <h5>Climate Change</h5>
-                    <p>Consectetur adipi lorem ipsum dolor sit amet, est eligendi scing elit consectetur.</p>
-
-                    <div class="sevices-w3layouts-img c4">
-                        <i class="fa fa-envira" aria-hidden="true"></i>
-                        <p>Lorem ipsum</p>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
+    </div>   
+    @await Component.InvokeAsync("_AboutPartial")
+    @await Component.InvokeAsync("_ServicePartial")
     <!--//sevices-->
     <!-- team -->
     <div class="team" id="team">
