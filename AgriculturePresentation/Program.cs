@@ -3,15 +3,18 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Contexts;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IServiceService, ServiceManager>();
-builder.Services.AddScoped<IServiceDal,EFServiceDal>();
+builder.Services.AddScoped<IServiceDal, EFServiceDal>();
 builder.Services.AddScoped<ITeamService, TeamManager>();
 builder.Services.AddScoped<ITeamDal, EFTeamDal>();
-builder.Services.AddScoped<IAnnouncementService,AnnouncementManager>();
-builder.Services.AddScoped<IAnnouncementDal,EFAnnouncementDal>();
+builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();
+builder.Services.AddScoped<IAnnouncementDal, EFAnnouncementDal>();
 builder.Services.AddScoped<IImageService, ImageManager>();
 builder.Services.AddScoped<IImageDal, EFImageDal>();
 builder.Services.AddScoped<IAddressService, AddressManager>();
@@ -26,6 +29,14 @@ builder.Services.AddDbContext<AgricultureContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMvc(config =>
+{
+    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
+builder.Services.AddMvc();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => { x.LoginPath = "/Login/Index/"; });
 
 var app = builder.Build();
 
