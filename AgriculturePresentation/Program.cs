@@ -5,6 +5,7 @@ using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Globalization;
 
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IAdminService, AdminManager>();
 builder.Services.AddScoped<IAdminDal, EFAdminDal>();
 builder.Services.AddDbContext<AgricultureContext>();
 
+builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AgricultureContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
