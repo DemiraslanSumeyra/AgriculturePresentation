@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddScoped<IServiceService, ServiceManager>();
 builder.Services.AddScoped<IServiceDal, EFServiceDal>();
 builder.Services.AddScoped<ITeamService, TeamManager>();
@@ -28,8 +29,12 @@ builder.Services.AddScoped<IAdminService, AdminManager>();
 builder.Services.AddScoped<IAdminDal, EFAdminDal>();
 builder.Services.AddDbContext<AgricultureContext>();
 
-builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AgricultureContext>();
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AgricultureContext>();
+
+
 // Add services to the container.
+
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddMvc(config =>
@@ -37,8 +42,19 @@ builder.Services.AddMvc(config =>
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
     config.Filters.Add(new AuthorizeFilter(policy));
 });
+
 builder.Services.AddMvc();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => { x.LoginPath = "/Login/Index/"; });
+
+//builder.Services.AddAuthentication().AddCookie(options => { options.LoginPath = "/Login/Index"; });
+
+
+//builder.Services.ConfigureApplicationCookie(options =>
+//{
+//    options.LoginPath = "/Login/Index/";
+//});
+
 
 var app = builder.Build();
 
@@ -52,6 +68,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseAuthentication();
 
 app.UseRouting();
 
