@@ -37,9 +37,7 @@ namespace AgriculturePresentation.Controllers
                     return RedirectToAction("Index", "Login");
                 }             
             }
-            return View(p);
-
-
+            return View();
         }
     }
 }

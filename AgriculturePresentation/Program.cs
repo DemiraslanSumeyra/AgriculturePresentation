@@ -20,7 +20,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 
  builder.Services.ContainerDependencies();
 
-
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
@@ -33,7 +32,11 @@ builder.Services.AddMvc(config =>
 
 builder.Services.AddMvc();
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => { x.LoginPath = "/Login/Index/"; });
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x => { x.LoginPath = "/Login/Index/"; });
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Login/Index";
+});
 
 //builder.Services.AddAuthentication().AddCookie(options => { options.LoginPath = "/Login/Index"; });
 
