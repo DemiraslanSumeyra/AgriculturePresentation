@@ -17,6 +17,7 @@
                             <th>Açıklama 2</th>
                             <th>Açıklama 3</th>
                             <th>Açıklama 4</th>                          
+                            <th>Sil</th>
                             <th>Düzenle</th>
                         </tr>
                     </thead>
@@ -27,13 +28,15 @@
                                 <td>@item.Description1</td>
                                 <td>@item.Description2</td>
                                 <td>@item.Description3</td>
-                                <td>@item.Description4</td>                              
-                                <td><a href="/Address/EditAddress/@item.AdressID" class="btn btn-outline-warning">Düzenle</a></td>
+                                <td>@item.Description4</td>
+                                <td><a href="/Address/DeleteAddress/@item.AdressID" class="btn btn-outline-danger">Sil</a></td>
+                                <td><a href="/Address/EditAddress/@item.AdressID" class="btn btn-outline-warning">Düzenle</a></td>                              
                             </tr>
                         }
                     </tbody>
                 </table>
                 <br />
+                <a href="/Address/AddAddress" class="btn btn-outline-info">Yeni Adres Girişi</a>
             </div>
         </div>
     </div>

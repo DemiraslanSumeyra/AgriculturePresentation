@@ -1,13 +1,13 @@
 ﻿@model EntityLayer.Concrete.Address
 @{
-    ViewData["Title"] = "EditAddress";
+    ViewData["Title"] = "AddAddress";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Adres Bilgi Düzenleme Sayfası</h4>
+            <h4 class="card-title">Yeni Adres Kaydı</h4>
             <form class="forms-sample" method="post">
                 <div class="form-group">
                     @Html.HiddenFor(x=>x.AdressID)
@@ -32,13 +32,10 @@
                     <input type="text" class="form-control" placeholder="Harita Bilgisi" asp-for="MapInfo">
                     <br />
                 </div>
-             <br />
+                <br />
                 <button type="submit" class="btn btn-outline-info">Kaydet</button>
-                <a href="" onclick="history.go(-1); return false;" class="btn btn-outline-warning">Vazgeç</a>
             </form>
         </div>
     </div>
 </div>
-
-
 

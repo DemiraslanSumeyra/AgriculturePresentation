@@ -20,8 +20,18 @@ namespace AgriculturePresentation.Controllers
             var values = _addressService.GetListAll();
             return View(values);
         }
-        
-        
+
+        [HttpGet]
+        public IActionResult AddAddress()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddAddress(Address address)
+        {
+            _addressService.Insert(address);
+            return RedirectToAction("Index");     
+        }
         [HttpGet]
         public IActionResult EditAddress(int id)
         {
@@ -46,6 +56,12 @@ namespace AgriculturePresentation.Controllers
                 }
                 return View();
             }
+        }
+        public IActionResult DeleteAddress(int id)
+        {
+            var values = _addressService.GetById(id);
+            _addressService.Delete(values);
+            return RedirectToAction("Index");
         }
     }
 }
