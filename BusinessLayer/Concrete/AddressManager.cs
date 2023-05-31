@@ -20,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public void Delete(Address t)
         {
-            throw new NotImplementedException(); 
+           _addressDal.Delete(t);
         }
 
         public Address GetById(int id)
@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public void Insert(Address t)
         {
-            throw new NotImplementedException();
+           _addressDal.Insert(t);
         }
 
         public void Update(Address t)
