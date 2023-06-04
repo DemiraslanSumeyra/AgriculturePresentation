@@ -1,8 +1,10 @@
-﻿using BusinessLayer.Abstract;
+﻿using AgriculturePresentation.Services;
+using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AgriculturePresentation.Controllers
@@ -11,7 +13,7 @@ namespace AgriculturePresentation.Controllers
     public class DefaultController : Controller
     {
         private readonly IContactService _contactService;
-
+       
         public DefaultController(IContactService contactService)
         {
             _contactService = contactService;
@@ -19,8 +21,10 @@ namespace AgriculturePresentation.Controllers
 
         public IActionResult Index()
         {            
+            
             return View();
         }
+        
         [HttpGet]
         public PartialViewResult SendMessage()
         {
